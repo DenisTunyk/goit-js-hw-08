@@ -24,9 +24,12 @@ const load = key => {
   }
 };
 
+if (!localStorage.getItem(LOCALSTORAGE_KEY)) {
+    localStorage.setItem(LOCALSTORAGE_KEY, 0);
+}
 
 
-player.setCurrentTime(load(LOCALSTORAGE_KEY).seconds).then(function(seconds) {
+player.setCurrentTime(load(LOCALSTORAGE_KEY)).then(function(seconds) {
     // seconds = the actual time that the player seeked to
 }).catch(function(error) {
     switch (error.name) {
@@ -43,6 +46,6 @@ player.setCurrentTime(load(LOCALSTORAGE_KEY).seconds).then(function(seconds) {
 player.on('timeupdate', throttle(timeOnNow, 1000));
 
 function timeOnNow(e) {
-    save(LOCALSTORAGE_KEY, e);
+    localStorage.setItem(LOCALSTORAGE_KEY, e.seconds);
 }
 

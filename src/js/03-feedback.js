@@ -19,7 +19,10 @@ const load = key => {
   }
 };
 
-//form.firstElementChild.firstElementChild.value = "888";
+
+if (!localStorage.getItem(LOCALSTORAGE_KEY)) {
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(storageValue));
+}
 
 if (load(LOCALSTORAGE_KEY).email) {
     //console.log(form.firstElementChild);
