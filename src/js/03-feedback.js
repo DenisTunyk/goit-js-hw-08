@@ -36,8 +36,13 @@ if (load(LOCALSTORAGE_KEY).message) {
 function onFormSubmit(e) {
     e.preventDefault();
     console.log("Відправлення форми");
-    console.log("Email: ", input.value);
-    console.log("Message: ", message.value);
+
+    const obj = {
+        "email": input.value,
+        "message": message.value,
+    }
+    console.log("Obj: ", obj);
+
     input.value = "";
     message.value = "";
     localStorage.removeItem(LOCALSTORAGE_KEY)
