@@ -8,7 +8,7 @@ const message = document.querySelector(".js-message");
 
 form.addEventListener("input", throttle(onFormInput, 500))
 form.addEventListener("submit", onFormSubmit)
-const storageValue = {}
+let storageValue = {}
 
 const load = key => {
   try {
@@ -45,6 +45,7 @@ function onFormSubmit(e) {
 
     input.value = "";
     message.value = "";
+    storageValue = {};
     localStorage.removeItem(LOCALSTORAGE_KEY)
 }
 
@@ -67,5 +68,3 @@ function onFormInput(e) {
     // }
     //console.log(storageValue);
 }
-
-//console.log(email);
